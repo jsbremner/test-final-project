@@ -1,0 +1,296 @@
+<html lang="en">
+  <head>
+    <title>CS4241 Assignment 1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+    <canvas width="960" height="600"></canvas>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@2"></script>
+    <script src="versor.js"></script>
+
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Assignment 6</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="https://cs4241-17a.github.io/">CS4241: WebWare</a></li>
+        </ul>
+  
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="https://cs4241-17a.github.io/">CS4241: WebWare</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
+          <h1 id="title" class="header center indigo-text light text-darken-2">Photo App</h1>
+          <div class="row center">
+            <h5 class="header col s12 black-text light">Click on the descriptions to learn more about the photos!</h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img id="world" src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/16112818_1363836587012926_4622957826434099474_o.jpg?oh=72c3f1534a2e93a9c3962df5f41ec7ae&oe=5A82D833" alt="Unsplashed background img 1"></div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+
+        <a class="waves-effect waves-light btn center" onclick="buttonClicked()">Toggle Italy filter</a>
+  
+        <div class="row">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send brown-text"></i></h3>
+            <h4>Photos</h4>
+            <div class="row">
+                <div class="col s4">
+                    <div id="iceland" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/14859833_1277295822333670_4533653207610546375_o.jpg?oh=a7785df3fbc96c7508e0b1ea6481d02d&oe=5A47A324">
+                            <span class="card-title">Kerith, Iceland</span>
+                        </div>
+                        <div id="icelandContent" class="card-content">
+                            <p>A crater on the Golden Circle, Iceland</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/14859833_1277295822333670_4533653207610546375_o.jpg?oh=a7785df3fbc96c7508e0b1ea6481d02d&oe=5A47A324">Original source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div id="amsterdam1" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15272171_1303893006340618_7992800173135112212_o.jpg?oh=3f9600dc8d12fc2afdc60d3ff34a6883&oe=5A798FA1">
+                            <span class="card-title">Amsterdam, Netherlands</span>
+                        </div>
+                        <div id="amsterdam1Content" class="card-content">
+                            <p>"I Amsterdam" sign near Rijksmuseum</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15272171_1303893006340618_7992800173135112212_o.jpg?oh=3f9600dc8d12fc2afdc60d3ff34a6883&oe=5A798FA1">Original source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div id="amsterdam2" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15194476_1303891803007405_9119460464873233911_o.jpg?oh=27fca63746408503c6ccc0886bc81869&oe=5A440DBC">
+                            <span class="card-title">Amsterdam, Netherlands</span>
+                        </div>
+                        <div id="amsterdam2Content" class="card-content">
+                            <p>Jordaan, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15194476_1303891803007405_9119460464873233911_o.jpg?oh=27fca63746408503c6ccc0886bc81869&oe=5A440DBC">Original source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div id="verona" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/l/t31.0-8/15196098_1303882706341648_3919501486350767667_o.jpg?oh=062a9f58bccad199c44fe7585be15f4c&oe=5A3DD859">
+                            <span class="card-title">Verona, Italy</span>
+                        </div>
+                        <div id="veronaContent" class="card-content">
+                            <p>Arena di Verona</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/l/t31.0-8/15196098_1303882706341648_3919501486350767667_o.jpg?oh=062a9f58bccad199c44fe7585be15f4c&oe=5A3DD859">Original source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div id="florence" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15271844_1303877496342169_3507260577770834300_o.jpg?oh=d78c47fcf0209e2fc4ecfd47e87839a5&oe=5A400D65">
+                            <span class="card-title">Florence, Italy</span>
+                        </div>
+                        <div id="florenceContent" class="card-content">
+                            <p>View of the Duomo in Florence</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/15271844_1303877496342169_3507260577770834300_o.jpg?oh=d78c47fcf0209e2fc4ecfd47e87839a5&oe=5A400D65">Original source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div id="venice" class="card">
+                        <div class="card-image">
+                            <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/14882358_1277308328999086_6443120314663360766_o.jpg?oh=7fa5f328922fa4024fa774ac3a789e45&oe=5A3A44CC">
+                            <span class="card-title">Venice, Italy</span>
+                        </div>
+                        <div id="veniceContent" class="card-content">
+                            <p>View of Venice and Giudecca from the St. Mark's Campanile</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/14882358_1277308328999086_6443120314663360766_o.jpg?oh=7fa5f328922fa4024fa774ac3a789e45&oe=5A3A44CC">Original source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+        </div>
+      </div>
+      <div class="parallax"><img id="wpi" src="https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/14856031_1277306342332618_5831049637336523571_o.jpg?oh=c1ae16b5865e135e82e1e359dc848e7a&oe=5A513068" alt="Unsplashed background img 2"></div>
+    </div>
+
+    <script>
+        var cards = document.querySelectorAll('.card');
+        for(var i=0;i<cards.length;i++){
+          cards[i].addEventListener('click', function() {
+            if (cards[i].style.display === "none") {
+                cards[i].style.display = "block";
+            } else {
+                cards[i].style.display = "none";
+            }
+          });
+        }
+
+        var iceland = document.getElementById('icelandContent');
+        var amsterdam1 = document.getElementById('amsterdam1Content');
+        var amsterdam2 = document.getElementById('amsterdam2Content');
+        var verona = document.getElementById('veronaContent');
+        var florence = document.getElementById('florenceContent');
+        var venice = document.getElementById('veniceContent');
+        var title = document.getElementById('title');
+        var icelandCard = document.getElementById('iceland');
+        var amsterdam1Card = document.getElementById('amsterdam1');
+        var amsterdam2Card = document.getElementById('amsterdam2');
+
+        iceland.addEventListener('click', function() {
+            iceland.innerHTML = '<p>The crater was thought to have been caused by land caving in, as Iceland is located on top of a fault line.</p>'
+        });
+        amsterdam1.addEventListener('click', function() {
+            amsterdam1.innerHTML = '<p>"Night Watch" by Rembrandt, along with many other notable paintings, are located in the Rikjsmuseum.</p>'
+        });
+        amsterdam2.addEventListener('click', function() {
+            amsterdam2.innerHTML = '<p>Many classic Amsterdam coffeehouses are located in the beautiful neighborhood of Jordaan.</p>'
+        });
+        verona.addEventListener('click', function() {
+            verona.innerHTML = '<p>Shakespeare\'s Romeo & Juliet took place in Verona.</p>'
+        });
+        florence.addEventListener('click', function() {
+            florence.innerHTML = '<p>Florence is located in the province of Tuscany, Italy.</p>'
+        });
+        venice.addEventListener('click', function() {
+            venice.innerHTML = '<p>The WPI Venice Project Center has been around for 30 years.</p>'
+        });
+        title.addEventListener('mousemove', function() {
+            title.innerText = 'Super Interactive Photo App!!!'
+        });
+
+        function buttonClicked() {
+            if (amsterdam1Card.style.display === "none") {
+                amsterdam1Card.style.display = "block";
+            } else {
+                amsterdam1Card.style.display = "none";
+            }
+
+            if (amsterdam2Card.style.display === "none") {
+                amsterdam2Card.style.display = "block";
+            } else {
+                amsterdam2Card.style.display = "none";
+            }
+
+            if (icelandCard.style.display === "none") {
+                icelandCard.style.display = "block";
+            } else {
+                icelandCard.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        var canvas = d3.select("canvas"),
+            width = canvas.property("width"),
+            height = canvas.property("height"),
+            context = canvas.node().getContext("2d");
+        
+        var projection = d3.geoOrthographic()
+            .scale((height - 10) / 2)
+            .translate([width / 2, height / 2])
+            .precision(0.1);
+        
+        var path = d3.geoPath()
+            .projection(projection)
+            .context(context);
+        
+        canvas.call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged));
+        
+        var render = function() {},
+            v0, // Mouse position in Cartesian coordinates at start of drag gesture.
+            r0, // Projection rotation as Euler angles at start.
+            q0; // Projection rotation as versor at start.
+        
+        function dragstarted() {
+            v0 = versor.cartesian(projection.invert(d3.mouse(this)));
+            r0 = projection.rotate();
+            q0 = versor(r0);
+        }
+        
+        function dragged() {
+            var v1 = versor.cartesian(projection.rotate(r0).invert(d3.mouse(this))),
+                q1 = versor.multiply(q0, versor.delta(v0, v1)),
+                r1 = versor.rotation(q1);
+            projection.rotate(r1);
+            render();
+        }
+        
+        d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, world) {
+            if (error) throw error;
+        
+            var sphere = {type: "Sphere"},
+                land = topojson.feature(world, world.objects.land);
+        
+            render = function() {
+            context.clearRect(0, 0, width, height);
+            context.beginPath(), path(sphere), context.fillStyle = "#fff", context.fill();
+            context.beginPath(), path(land), context.fillStyle = "#000", context.fill();
+            context.beginPath(), path(sphere), context.stroke();
+            };
+        
+            render();
+        });
+        
+        </script>
+  </body>
+  <footer class="page-footer indigo">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">
+            <a href="https://www.wpi.edu/">Worcester Polytechnic Institute (WPI)</a>
+          </h5>
+          <p class="grey-text text-lighten-4">
+            <a href="https://www.wpi.edu/academics/departments/computer-science">Computer Science Department</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Site made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize CSS</a>
+      </div>
+    </div>
+  </footer>
+</html>
